@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "f49548d1-8268-47b9-b6b5-ac17011a65cc",
+		"name": "Prueba Técnica QA - API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48215023",
+		"_collection_link": "https://dapip96-2793229.postman.co/workspace/Daniel-Felipe-Merchan-Godoy's-W~d9feac02-75ba-468f-875e-7734831b1af8/collection/48215023-f49548d1-8268-47b9-b6b5-ac17011a65cc?action=share&source=collection_link&creator=48215023"
+	},
+	"item": [
+		{
+			"name": "Caso 1 - API Disponible",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Verificar que el status code es 200\r",
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Verificar que la respuesta es un array JSON\r",
+							"pm.test(\"Response is JSON array\", function() {\r",
+							"    pm.response.to.be.json;\r",
+							"    pm.response.to.have.jsonBody();\r",
+							"});\r",
+							"\r",
+							"// Verificar que el body no está vacío\r",
+							"pm.test(\"Response body is not empty\", function() {\r",
+							"    pm.expect(pm.response.json().length).to.be.greaterThan(0);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/products",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
